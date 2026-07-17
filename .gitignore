@@ -1,1 +1,15 @@
+.venv
+.Rlib
+.ruff_cache
 .DS_Store
+.env
+__pycache__/
+data/full-texts/
+data/jobs.json
+data/judge_jobs.json
+add-on/
+retired/
+data/responses/
+data/scores/
+*.parquet
+outputs/

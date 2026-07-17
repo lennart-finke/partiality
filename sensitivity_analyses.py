@@ -118,9 +118,18 @@ def build_chi_judge_columns(df: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
             "Expected 'judge_company_id' in df; load via "
             "hypothesis_testing.load_csv / _prepare."
         )
-    companies = sorted(set(df["judge_company_id"]).union(df["story_company_id"]))
-    stories = df[["story_id", "story_company_id"]].drop_duplicates()
     out = df.copy()
+    slug_to_company = (
+        out[["target_company_id", "company_id"]]
+        .drop_duplicates()
+        .set_index("target_company_id")["company_id"]
+        .to_dict()
+    )
+    judge_company = (
+        out["judge_company_id"].map(slug_to_company).fillna(out["judge_company_id"])
+    )
+    companies = sorted(set(judge_company).union(out["story_company_id"]))
+    stories = df[["story_id", "story_company_id"]].drop_duplicates()
     chi_cols: list[str] = []
     for c in companies:
         n_about = int((stories["story_company_id"] == c).sum())
@@ -128,11 +137,11 @@ def build_chi_judge_columns(df: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
         if n_about == 0 or n_other == 0:
             continue
         # Only meaningful if we actually have a judge from company c.
-        if not (out["judge_company_id"] == c).any():
+        if not (judge_company == c).any():
             continue
         col = f"chi__{c}"
         chi_vec = np.where(out["story_company_id"] == c, 0.5, -0.5)
-        out[col] = np.where(out["judge_company_id"] == c, chi_vec, 0.0)
+        out[col] = np.where(judge_company == c, chi_vec, 0.0)
         chi_cols.append(col)
     return out, chi_cols
 
@@ -439,4 +448,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-main()

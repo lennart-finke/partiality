@@ -13,6 +13,7 @@ import csv
 import json
 from pathlib import Path
 
+from config import flip_inverted_scores
 
 DEFAULT_SCORES_DIR = Path("data/scores")
 DEFAULT_STORIES = Path("data/stories/top_per_company.json")
@@ -65,6 +66,9 @@ def iter_score_records(scores_dir: Path, scores_jsonl: Path | None) -> list[dict
 
 
 def analysis_row(rec: dict, stories: dict[str, dict]) -> dict:
+    # Recode inverted-rubric templates (config.INVERTED_TEMPLATE_IDS) so the
+    # exported scores are uniformly HIGH = partial.
+    rec = flip_inverted_scores(rec)
     story_id = str(rec.get("story_id", ""))
     story = stories.get(story_id, {})
     story_date = (

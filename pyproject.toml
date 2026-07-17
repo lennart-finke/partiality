@@ -1,0 +1,21 @@
+[project]
+name = "partiality"
+version = "0.1.0"
+description = "Pre-registered experiment testing whether LLMs are more favorable to their creator companies."
+readme = "readme.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "numpy<2.1",
+    "pandas",
+    "pyarrow",
+    "pyfixest",
+    "statsmodels",
+    "matplotlib",
+    "huggingface_hub",
+    "requests",
+    "python-dotenv",
+]
+
+[tool.uv]
+package = false

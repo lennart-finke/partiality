@@ -1,0 +1,54 @@
+{
+  "anthropic/claude-opus-4.7": "2026-01-31",
+  "anthropic/claude-sonnet-4.6": "2026-01-31",
+  "anthropic/claude-sonnet-4": "2025-03-31",
+  "deepseek/deepseek-r1": "2024-07-31",
+  "deepseek/deepseek-v3.2": "2025-07-31",
+  "deepseek/deepseek-v4-pro": "2026-04-24",
+  "google/gemini-2.0-flash-001": "2024-08-31",
+  "google/gemini-3.1-pro-preview": "2025-01-31",
+  "google/gemma-4-31b-it": "2025-01-31",
+  "meta-llama/llama-3-70b-instruct": "2023-12-31",
+  "meta-llama/llama-3.3-70b-instruct": "2023-12-31",
+  "meta-llama/llama-4-maverick": "2024-08-31",
+  "openai/gpt-4o": "2023-10-31",
+  "openai/gpt-5.5": "2025-12-31",
+  "openai/gpt-oss-120b": "2024-06-30",
+  "qwen/qwen3-235b-a22b": "2025-06-30",
+  "qwen/qwen3.6-flash": "2026-04-16",
+  "qwen/qwen3.6-plus": "2026-04-02",
+  "x-ai/grok-4.20": "2025-09-01",
+  "x-ai/grok-4.3": "2025-12-31",
+  "x-ai/grok-build-0.1": "2026-05-20",
+
+  "_meta": {
+    "description": "Knowledge-cutoff dates (YYYY-MM-DD) per target_model_id, consumed by sensitivity_analyses.py --model-cutoffs. Keys prefixed with '_' are documentation and are ignored by the analysis (they never match a target_model_id).",
+    "metric": "Training-data cutoff for Anthropic models (Anthropic publishes both a 'reliable knowledge cutoff' and a broader 'training data cutoff'; the latter is used here). For all other providers the single published knowledge/training cutoff is used.",
+    "day_convention": "Month-only published cutoffs are pinned to the last day of that month (story_date > cutoff is the post-cutoff indicator). Cutoffs already published as a specific day are kept verbatim.",
+    "estimated": {
+      "note": "No knowledge cutoff is publicly documented for these models (all released Apr-May 2026). The model's RELEASE DATE is used as a conservative proxy and should be treated as an estimate, not a sourced cutoff.",
+      "models": {
+        "deepseek/deepseek-v4-pro": "release 2026-04-24",
+        "qwen/qwen3.6-plus": "release 2026-04-02",
+        "qwen/qwen3.6-flash": "release 2026-04-16 (Qwen3.6 series launch)",
+        "x-ai/grok-build-0.1": "release 2026-05-20"
+      }
+    },
+    "sources": {
+      "anthropic": "platform.claude.com/docs/en/about-claude/models/overview (Opus 4.7 & Sonnet 4.6 training cutoff Jan 2026; Sonnet 4 training cutoff Mar 2025)",
+      "deepseek-r1": "DeepSeek-R1 reported cutoff Jul 2024",
+      "deepseek-v3.2": "aiknowledgecutoff.com (V3.2-Exp 2025-07-31)",
+      "gemini-2.0-flash-001": "Google model card / community trackers (Aug 2024)",
+      "gemini-3.1-pro-preview": "aiknowledgecutoff.com (2025-01-31)",
+      "gemma-4": "Google DeepMind Gemma 4 model page (Jan 2025)",
+      "llama-3-70b / llama-3.3-70b": "Meta model cards (Dec 2023)",
+      "llama-4-maverick": "Meta Llama 4 model card (Aug 2024)",
+      "gpt-4o": "OpenAI model card (Oct 2023)",
+      "gpt-5.5": "OpenAI API model page (Dec 2025)",
+      "gpt-oss-120b": "community trackers (Jun 2024)",
+      "qwen3-235b-a22b": "aiknowledgecutoff.com (2507 build, 2025-06-30)",
+      "grok-4.20": "aiknowledgecutoff.com (2025-09-01)",
+      "grok-4.3": "aiknowledgecutoff.com / xAI (2025-12-31)"
+    }
+  }
+}

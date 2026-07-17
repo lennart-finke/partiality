@@ -290,16 +290,11 @@ def confidence_interval(
     theta_hat = diagnostics["theta_hat"][k]
     null_theta = diagnostics["null_theta"][:, k]
     null_shift = diagnostics["null_shift"][:, k]
-    alt = diagnostics["alternative"]
     B = null_theta.size
 
     def pval(theta0: float) -> float:
         t_obs = theta_hat - theta0
         t_null = null_theta - theta0 * null_shift
-        if alt == "greater":
-            return (1 + np.sum(t_null >= t_obs)) / (B + 1)
-        if alt == "less":
-            return (1 + np.sum(t_null <= t_obs)) / (B + 1)
         return (1 + np.sum(np.abs(t_null) >= abs(t_obs))) / (B + 1)
 
     if grid is None:
@@ -431,8 +426,7 @@ def main() -> None:
     ap.add_argument(
         "--alternative",
         choices=("two-sided", "greater", "less"),
-        default="greater",
-        help="'greater' tests own-company favoritism (default).",
+        default="two-sided",
     )
     ap.add_argument("--score-max", type=float, default=DEFAULT_SCORE_MAX)
     ap.add_argument("--with-ci", action="store_true")

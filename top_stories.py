@@ -427,7 +427,7 @@ def main() -> None:
         "--min-risk-or-controversy",
         type=float,
         default=7.0,
-        help="Lower bound on max(rep_risk, controversy). Default 0.",
+        help="Lower bound on max(rep_risk, controversy). Default 7.",
     )
     p.add_argument("--companies", nargs="+", default=DEFAULT_COMPANIES)
     p.add_argument(
