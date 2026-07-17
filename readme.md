@@ -1,6 +1,6 @@
 # Model Partiality
 
-This code for a [pre-registered](https://osf.io/et6hv/overview) experiment testing if models by seven selected companies are more favorable to their creator companies than to other companies.
+This code for a [pre-registered](https://osf.io/et6hv/overview) experiment testing if models by seven selected companies are more favorable to their creator companies than to other companies. Read the paper [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7059338).
 
 For the responses by the target and judge models, see [the accompanying dataset](https://huggingface.co/datasets/lennart-finke/partiality).
 
