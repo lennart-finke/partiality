@@ -3,7 +3,7 @@ name = "partiality"
 version = "0.1.0"
 description = "Pre-registered experiment testing whether LLMs are more favorable to their creator companies."
 readme = "readme.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.13"
 
 dependencies = [
     "numpy<2.1",
